@@ -7,6 +7,7 @@ urlpatterns = [
 
 htmx_urlpatterns = [
     path('check_product/', htmx_views.check_product, name='check_product'),
+    path('save_product/', htmx_views.save_product, name='save_product'),
 ]
 
 urlpatterns += htmx_urlpatterns

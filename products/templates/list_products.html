@@ -10,18 +10,22 @@
   </head>
   <body>
     <div class='container'>
-        <div class='row'>
-            <div class='col-md'>
-                <label for=''>Nome do produto:</label>
-                <input type='text' name='product' class='form-control' hx-get='{% url "check_product" %}' hx-trigger='keyup' hx-target='#product-out'>
-                <div id='product-out'></div>
-                <br>
-                <label for=''>Preço do produto:</label>
-                <input type='number' name='price' class='form-control'>
-                <br>
-                <button class='btn btn-success'>Salvar</button>
-            </div>
+      <div class='row'>
+        <div class='col-md'>
+          <form>
+            {% csrf_token %}
+            <label for=''>Nome do produto:</label>
+            <input type='text' name='product' class='form-control' hx-get='{% url "check_product" %}' hx-trigger='keyup' hx-target='#product-out'>
+            <div id='product-out'></div>
+            <br>
+            <label for=''>Preço do produto:</label>
+            <input type='number' name='price' class='form-control'>
+            <br>
+            <button class='btn btn-success' hx-post='{% url "save_product" %}' hx-trigger='click' hx-target='#product-in'>Salvar</button>
+            <div id='product-in'></div>
+          </form>
         </div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
